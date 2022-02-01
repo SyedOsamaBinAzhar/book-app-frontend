@@ -1,24 +1,48 @@
 .signupLayoutContainer {
+    position: relative;
     display: grid;
     grid-template-columns: 100vw;
     grid-template-rows: minmax(100vh , min-content);
-    background-color: pink;
     grid-template-areas: "signupLayoutChildContainer";
 }
 .signupLayoutChildContainer {
     display: grid;
     grid-area: "signupLayoutChildContainer";
-    background-color: orange;
+    background-image: url("../../Assets/books.svg");
     grid-template-columns: 35% 65%;
     grid-template-areas: "signupColOne signupColTwo";
 }
 .signupColOne {
     grid-area: "signupColOne";
-    background-color: orchid;
+    background-image: url("../../Assets/books.svg");
 }
 .signupColTwo {
     grid-area: "signupColTwo";
-    background-color: blue;
+    background-color: #FFFFFF;
     border-top-left-radius: 38px;
     border-bottom-left-radius: 38px;
+}
+.alreadyHaveAnAccountParaLogin {
+    color : #7B7A7A;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    margin-top: 15px;
+}
+.alreadyHaveAnAccountParaSignup {
+    color : #7B7A7A;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    margin-top: 30px;
+}
+.loginPara {
+    color: #24819E;
+    cursor: pointer;
+}
+.signupFormCont {
+    width: 50%;
+    height: 70%;
+}
+.loginFormCont {
+    width: 50%;
+    height: 50%;
 }
