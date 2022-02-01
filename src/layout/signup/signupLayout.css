@@ -1,0 +1,24 @@
+.signupLayoutContainer {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: minmax(100vh , min-content);
+    background-color: pink;
+    grid-template-areas: "signupLayoutChildContainer";
+}
+.signupLayoutChildContainer {
+    display: grid;
+    grid-area: "signupLayoutChildContainer";
+    background-color: orange;
+    grid-template-columns: 35% 65%;
+    grid-template-areas: "signupColOne signupColTwo";
+}
+.signupColOne {
+    grid-area: "signupColOne";
+    background-color: orchid;
+}
+.signupColTwo {
+    grid-area: "signupColTwo";
+    background-color: blue;
+    border-top-left-radius: 38px;
+    border-bottom-left-radius: 38px;
+}
