@@ -1,16 +1,17 @@
-import React from "react";
-import {  Redirect, Route } from "react-router-dom";
-import {useSelector} from "react-redux";
-import SignupPage from "../pages/signup/signupPage";
+// import React from "react";
+// import {  Redirect, Route } from "react-router-dom";
+// import {useSelector} from "react-redux";
 
-function ProtectedRoute({ component: Component, ...restOfProps }) {
-  const isAuthenticated = useSelector((state) => state.authStatus);
-//   console.log(isAuthenticated);
-  console.log("this", isAuthenticated);
+// import SignupPage from "../pages/signup/signupPage";
 
-  return (
-    isAuthenticated ? <h1>HELLO LOGGED USER</h1> : window.location('/register')
-  );
-}
+// function ProtectedRoute({ component: Component, ...restOfProps }) {
+//   // const isAuthenticated = useSelector((state) => state.authStatus);
+// //   console.log(isAuthenticated);
+//   // console.log("this", isAuthenticated);
 
-export default ProtectedRoute;
+//   return (
+//     isAuthenticated ? <h1>HELLO LOGGED USER</h1> : window.location('/register')
+//   );
+// }
+
+// export default ProtectedRoute;

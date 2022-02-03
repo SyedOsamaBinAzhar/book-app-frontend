@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
     navItemStyles : {
         fontFamily : "Poppins",
-        fontSize : "17px",
-        color : "#24819E",
-
+        fontSize : "20px",
+        color : "white",
+        fontWeight : 600
     }
   }));
 

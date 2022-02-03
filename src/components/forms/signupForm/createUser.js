@@ -15,6 +15,7 @@ const createUser = async (userDetails) => {
           })
 
         // console.log(user);
+        return user;
         
         } catch (error) {
         console.log("err2",error);

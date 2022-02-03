@@ -1,0 +1,22 @@
+.cardsLayoutCont{
+    display: grid;
+    /* background-color: purple; */
+    grid-template-columns: 90vw;
+    grid-template-rows: minmax(10vh, 20vh) minmax(70vh, 1fr);
+    grid-template-areas: "headingCont"
+                        "booksCont";
+}
+.headingCont {
+    grid-area: headingCont;
+    /* background-color: rosybrown; */
+}
+.booksCont {
+    display: grid;
+    grid-area: booksCont;
+    /* background-color: royalblue; */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-gap: 11rem;
+}
+.cardCont {
+    /* background-color: red; */
+}

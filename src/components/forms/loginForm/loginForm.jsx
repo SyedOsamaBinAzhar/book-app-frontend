@@ -5,13 +5,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { useDispatch } from 'react-redux';
 
+import { useNavigate } from 'react-router-dom';
+
 import loginUser from './loginUser';
 
-import { signinAction, signoutAction } from '../../../actions/authAction';
+import { userAction } from '../../../actions/userAction';
 
 const LoginForm = () => {
 
  const classes = useStyles();
+
+ let navigate = useNavigate();
+
 
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
@@ -20,7 +25,6 @@ const LoginForm = () => {
 
 
  const emailHandler = (e) => {
-     console.log(e.target.value);
     setEmail(e.target.value)
 }
 
@@ -28,27 +32,36 @@ const passwordHandler = (e) => {
     setPassword(e.target.value)
 }
 
+
+
 const onFormSubmit = async(e) => {
+
     e.preventDefault();
+
 
     const userDetails = {
         email,
         password,
     }
 
+
     const user = await loginUser(userDetails);
 
     //Even if we change this code to !user.data then no damage will happen
     //  because access token won't be sent from backend if there's no
     // true user
+
     if(user.data) {
         alert("signin successful");
-        // setLoginStatus(true);
-        
+
+        // set global state in redux
+        dispatch(userAction(user));
+
+        navigate(`/books`);
+
     } else {
         alert("invalid email or password please try again.");
-        // setLoginStatus(false);
-        dispatch(signoutAction());
+        // dispatch(signoutAction());
     }
 
     

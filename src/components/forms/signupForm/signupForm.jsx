@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import createUser from "./createUser";
+import { userAction } from '../../../actions/userAction';
+import { authAction } from '../../../actions/authAction';
+
 
 const SignupForm = () => {
 
@@ -11,6 +16,9 @@ const SignupForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    let navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const nameHandler = (e) => {
@@ -25,12 +33,7 @@ const SignupForm = () => {
         setPassword(e.target.value)
     }
 
-    // useEffect(() => {
-    //     console.log(name,email,password);
-        
-    // }, [name,email,password])
-
-    const onFormSubmit = (e) => {
+    const onFormSubmit = async(e) => {
         e.preventDefault()
         console.log("hello");
         const userDetails = {
@@ -38,11 +41,36 @@ const SignupForm = () => {
             email,
             password
         }
-        console.log(userDetails);
+        // console.log(userDetails);
         
 
         //initiate request
-        createUser(userDetails)
+        const user = await createUser(userDetails)
+        console.log("user",user);
+
+        //Destructuring:
+
+        // const { data : { userId, usersName, usersEmail } } = user;
+        // const {userId, usersName, usersEmail} = data;
+        // console.log(userId, usersName, usersEmail);
+
+        const { data } = user;
+
+        if(data) {
+            alert("signin successful");
+
+            // set global state in redux for user
+            dispatch(userAction(data));
+            // set global state in redux for auth true/false
+            dispatch(authAction());
+
+            navigate(`/books`);
+    
+        } else {
+            // dispatch(signoutAction());
+            alert("Something Went Wrong, Please Try Again")
+        }
+
     }
     return <form className={classes.formStyling} onSubmit={onFormSubmit}>
       
