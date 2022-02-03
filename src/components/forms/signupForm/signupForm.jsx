@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
 import { makeStyles } from '@material-ui/core/styles';
+
+import createUser from "./createUser";
 
 const SignupForm = () => {
 
     const classes = useStyles();
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
- return <form className={classes.formStyling}>
+
+    const nameHandler = (e) => {
+        setName(e.target.value)
+    }
+
+    const emailHandler = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const passwordHandler = (e) => {
+        setPassword(e.target.value)
+    }
+
+    // useEffect(() => {
+    //     console.log(name,email,password);
+        
+    // }, [name,email,password])
+
+    const onFormSubmit = (e) => {
+        e.preventDefault()
+        console.log("hello");
+        const userDetails = {
+            name,
+            email,
+            password
+        }
+        console.log(userDetails);
+        
+
+        //initiate request
+        createUser(userDetails)
+    }
+    return <form className={classes.formStyling} onSubmit={onFormSubmit}>
       
       <TextField 
         className = {classes.fieldStyling} 
@@ -16,7 +52,8 @@ const SignupForm = () => {
         label="Enter Full Name" 
         variant="outlined" 
         margin='normal' 
-        required 
+        required
+        onChange={nameHandler} 
         InputProps={{
             style : {
                 fontSize : "15px",
@@ -31,8 +68,10 @@ const SignupForm = () => {
         id="outlined-basic" 
         label="Enter Email" 
         variant="outlined" 
-        required m
-        argin='normal'
+        required
+        onChange={emailHandler} 
+        margin='normal'
+        type = "email"
         InputProps={{
             style : {
                 fontSize : "15px",
@@ -49,7 +88,8 @@ const SignupForm = () => {
         label="Enter Password" 
         type="password" 
         variant="outlined" 
-        margin='normal' 
+        margin='normal'
+        onChange={passwordHandler} 
         InputProps={{
             style : {
                 fontSize : "15px",
@@ -59,7 +99,7 @@ const SignupForm = () => {
         }}
       />
 
-      <Button variant="contained" className = {classes.buttonStyles}><p>Create Account</p></Button>
+      <Button variant="contained" className = {classes.buttonStyles} type = "submit"><p>Create Account</p></Button>
 
      </form>;
 };

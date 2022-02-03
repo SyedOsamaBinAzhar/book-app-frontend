@@ -1,21 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import loginUser from './loginUser';
+
+import { signinAction, signoutAction } from '../../../actions/authAction';
 
 const LoginForm = () => {
 
  const classes = useStyles();
 
- return <form className={classes.formStyling}>
+ const [email, setEmail] = useState('');
+ const [password, setPassword] = useState('');
+
+ const dispatch = useDispatch()
+
+
+ const emailHandler = (e) => {
+     console.log(e.target.value);
+    setEmail(e.target.value)
+}
+
+const passwordHandler = (e) => {
+    setPassword(e.target.value)
+}
+
+const onFormSubmit = async(e) => {
+    e.preventDefault();
+
+    const userDetails = {
+        email,
+        password,
+    }
+
+    const user = await loginUser(userDetails);
+
+    //Even if we change this code to !user.data then no damage will happen
+    //  because access token won't be sent from backend if there's no
+    // true user
+    if(user.data) {
+        alert("signin successful");
+        // setLoginStatus(true);
+        dispatch(signinAction());
+    } else {
+        alert("invalid email or password please try again.");
+        // setLoginStatus(false);
+        dispatch(signoutAction());
+    }
+
+    
+    
+}
+ return <form className={classes.formStyling} onSubmit={onFormSubmit}>
         
       <TextField 
         className = {classes.fieldStyling} 
         id="outlined-basic" 
         label="Enter Email" 
         variant="outlined" 
-        required m
-        argin='normal'
+        required
+        margin='normal'
+        onChange = {emailHandler}
+        value = {email}
         InputProps={{
             style : {
                 fontSize : "15px",
@@ -31,7 +78,9 @@ const LoginForm = () => {
         id="outlined-basic" 
         label="Enter Password" 
         type="password" 
-        variant="outlined" 
+        variant="outlined"
+        onChange={passwordHandler}
+        value = {password} 
         margin='normal' 
         InputProps={{
             style : {
@@ -42,7 +91,7 @@ const LoginForm = () => {
         }}
       />
 
-      <Button variant="contained" className = {classes.buttonStyles}><p>Login</p></Button>
+      <Button variant="contained" className = {classes.buttonStyles} type = "submit"><p>Login</p></Button>
 
      </form>;
 };
