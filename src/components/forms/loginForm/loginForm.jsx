@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import loginUser from './loginUser';
 
 import { userAction } from '../../../actions/userAction';
+import { authAction } from '../../../actions/authAction';
 
 const LoginForm = () => {
 
@@ -51,11 +52,18 @@ const onFormSubmit = async(e) => {
     //  because access token won't be sent from backend if there's no
     // true user
 
-    if(user.data) {
+    // console.log(user.data);
+
+    const { data } = user;
+
+    if(data) {
         alert("signin successful");
 
-        // set global state in redux
-        dispatch(userAction(user));
+        // set global state in redux for user
+        dispatch(userAction(data));
+        
+        // set global state in redux for auth true/false
+        dispatch(authAction());
 
         navigate(`/books`);
 
