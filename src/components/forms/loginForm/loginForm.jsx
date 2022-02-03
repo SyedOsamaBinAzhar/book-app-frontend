@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+
 import { useDispatch } from 'react-redux';
+
 import loginUser from './loginUser';
 
 import { signinAction, signoutAction } from '../../../actions/authAction';
@@ -42,7 +44,7 @@ const onFormSubmit = async(e) => {
     if(user.data) {
         alert("signin successful");
         // setLoginStatus(true);
-        dispatch(signinAction());
+        
     } else {
         alert("invalid email or password please try again.");
         // setLoginStatus(false);

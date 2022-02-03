@@ -1,0 +1,15 @@
+.booksLayoutContainer {
+    display: grid;
+    grid-template-columns: 5vw 90vw 5vw;
+    grid-template-rows: minmax(15vh,min-content) minmax(85vh,min-content);
+    grid-template-areas: ". navbarContainer ."
+                        ". booksContainer .";
+}
+.navbarContainer {
+    grid-area: navbarContainer;
+    background-color: pink;
+}
+.booksContainer {
+    grid-area: booksContainer;
+    background-color: orange;
+}
