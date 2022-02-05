@@ -5,18 +5,52 @@ import Paragraph from '../../components/reusable/paragraph/paragraph';
 import "./specificBook.css";
 import bookCover from "../../Assets/books/1.jpg"
 import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Slider from '@material-ui/core/Slider'
+import { makeStyles } from '@material-ui/core/styles';
 
 const SpecificBook = () => {
 
-    useEffect(() => {
-    
-    }, []);
-    
+    const classes = useStyles();
+
+
+    function valuetext(value) {
+        console.log(value)
+      }
+
   return <div className='container'>
       <div className="navbarCont"><Navbar/></div>
       <div className="contentCont">
           <div className="imageAndCommentCont">
               <img src={bookCover} className = "bookCover"/>
+
+              <div>
+                  <form className = "flex-col" style = {{marginTop : 20}}>
+                        <Heading
+                            value = "How Much Do You Like This Book?"
+                            weight = {900}
+                            fontFamily = "Poppins, sans-serif"
+                            fontSize = {25}
+                            color = "white"
+                            lineHeight = {1.5}
+                        />
+                        <Slider
+                        aria-label="Small steps"
+                        defaultValue={0.00000005}
+                        getAriaValueText={valuetext}
+                        step={1}
+                        marks
+                        min={1}
+                        max={5}
+                        valueLabelDisplay="auto"
+                        valueLabelDisplay="on"
+                        color = "red"
+                        style ={{width : 250, marginTop : 40, color : "red"}}
+                    />
+                  
+                    <Button type = "submit" className = {classes.btns}>SUBMIT</Button>
+                  </form>
+              </div>
           </div>
           <div className="bookDetailsCont">
               <div className="bookDetails">
@@ -24,8 +58,8 @@ const SpecificBook = () => {
                 value = "Harry Potter And The Chamber Of Secrets." 
                 weight = {900}
                 fontFamily = "Poppins, sans-serif"
-                fontSize = {25}
-                color = "black"
+                fontSize = {30}
+                color = "#24819E"
                 lineHeight = {1.5}
                 />
 
@@ -34,7 +68,7 @@ const SpecificBook = () => {
                 weight = {400}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {14}
-                color = "red"
+                color = "white"
                 textAlign = "left"
                 lineHeight = {2}
                 />
@@ -44,7 +78,7 @@ const SpecificBook = () => {
                 weight = {400}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {14}
-                color = "red"
+                color = "white"
                 textAlign = "left"
                 lineHeight = {2}
                 />
@@ -54,7 +88,7 @@ const SpecificBook = () => {
                 weight = {400}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {14}
-                color = "red"
+                color = "white"
                 textAlign = "left"
                 lineHeight = {2}
                 />
@@ -64,7 +98,7 @@ const SpecificBook = () => {
                 weight = {400}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {14}
-                color = "red"
+                color = "white"
                 textAlign = "left"
                 lineHeight = {2}
                 />
@@ -74,18 +108,31 @@ const SpecificBook = () => {
                 weight = {400}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {14}
-                color = "red"
+                color = "white"
                 textAlign = "left"
                 lineHeight = {2}
                 />
 
-              <Button variant = "contained" style = {{marginTop : 10}}>Request For Your Book Now!</Button>
-
-
+                <Button className = {classes.btns}>Request Your Book Now!</Button>
               </div>
           </div>
       </div>
   </div>;
 };
+
+const useStyles = makeStyles({
+    btns : {
+        fontSize : "13px",
+        background: "#24819E", 
+        color : "white", 
+        fontWeight : 800, 
+        letterSpacing: 1, 
+        fontFamily : "Poppins", 
+        marginTop : 20,
+        marginBottom : 20,
+        paddingLeft : 30,
+        paddingRight : 30 
+    }
+})
 
 export default SpecificBook;
