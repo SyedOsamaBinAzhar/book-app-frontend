@@ -10,10 +10,11 @@ const Paragraph = ({
   textAlign, 
   top, 
   position, 
-  width
+  width,
+  lineHeight
 
   }) => {
-            return <p style = {{fontWeight : weight, fontSize, color, fontFamily, textAlign, top, position, width}}>
+            return <p style = {{fontWeight : weight, fontSize, color, fontFamily, textAlign, top, position, width, lineHeight}}>
                     {value}
                   </p>;
 };

@@ -9,17 +9,14 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import One from "../../Assets/books/1.jpg";
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 305,
-        height: 480,
+        height: 560,
     },
     media: {
-        height: 180,
-        //   backgroundSize : "100% 100%, cover",
+        height: 240,
     },
     cardTitle: {
         color: "#24819E",
@@ -28,11 +25,11 @@ const useStyles = makeStyles({
         fontSize: 18,
     },
     authorStyles: {
-        color: "",
+        color: "grey",
         fontFamily: "Poppins",
         letterSpacing: 0.5,
         lineHeight: 1,
-        fontWeight: 700,
+        fontWeight: 600,
         marginTop: 10
 
     },
@@ -40,7 +37,7 @@ const useStyles = makeStyles({
         color: "",
         fontFamily: "Poppins",
         letterSpacing: 0.5,
-        lineHeight: 1,
+        lineHeight: 1.5,
         marginTop: 10
     },
     learnMoreBtn: {
@@ -48,14 +45,18 @@ const useStyles = makeStyles({
         fontFamily: "Poppins",
         background: "#24819E",
         fontWeight: 500,
-        paddingLeft: 40,
-        paddingRight: 40,
+        paddingLeft: 60,
+        paddingRight: 60,
+        paddingTop: 10,
+        paddingBottom: 10,
+        fontSize: 13,
     }
 });
 
-const CardsLayout = () => {
+const CardsLayout = ({ books }) => {
 
     const classes = useStyles();
+
 
     return <div className='cardsLayoutCont'>
         <div className="headingCont flex">
@@ -64,132 +65,38 @@ const CardsLayout = () => {
                 weight={900}
                 fontFamily="Poppins, sans-serif"
                 fontSize={35}
-                // color = "#24819E"
                 color="white"
 
             />
         </div>
         <div className="booksCont">
-            <Card className={classes.root}>
+            {
+                books.map((book) => <Card className={classes.root}>
                 <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={One}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <h4 className={classes.cardTitle}>Harry Potter The Prisoner Of Askaban.</h4>
-                        <p className={classes.authorStyles}>Author : Osama Azhar</p>
-                        <p className={classes.paraStyles}>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit asperiores saepe voluptates provident maiores aliquam quo, quia cumque rem optio? Id, ab at incidunt fuga tempora eos quasi molestiae dolor?</p>
-                        <p className={classes.paraStyles}>Availability : <span style={{ color: "#24819E" }}>Available</span></p>
-                        {/* <p>Posted At: 20th/Jan/2021</p> */}
-
-
-                    </CardContent>
-                </CardActionArea>
-                <CardActions stlye={{ border: "1px solid black" }}>
-
-                    <Button variant="contained" className={classes.learnMoreBtn}>
-                        Learn More
-                    </Button>
-                </CardActions>
-            </Card>
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={One}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <h4 className={classes.cardTitle}>Harry Potter The Prisoner Of Askaban.</h4>
-                        <p className={classes.authorStyles}>Author : Osama Azhar</p>
-                        <p className={classes.paraStyles}>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit asperiores saepe voluptates provident maiores aliquam quo, quia cumque rem optio? Id, ab at incidunt fuga tempora eos quasi molestiae dolor?</p>
-                        <p className={classes.paraStyles}>Availability : Available</p>
-                        {/* <p>Posted At: 20th/Jan/2021</p> */}
-
-
-                    </CardContent>
+                  <CardMedia
+                    className={classes.media}
+                    image={book.bookCover}
+                  />
+                  <CardContent>
+                      <Heading
+                      value = {book.bookName}
+                      fontFamily = "Poppins"
+                      color="#24819E"
+                      fontWeight = {700}
+                      fontSize = {25}
+                      />
+                    <p className={classes.authorStyles}>Author : {book.bookAuthor}</p>
+                    <p className={classes.paraStyles}>Description : {book.bookDescription}</p>
+                    <p className={classes.paraStyles}>Price: {book.bookPrice}</p>
+                  </CardContent>
                 </CardActionArea>
                 <CardActions>
-
-                    <Button size="small" color="primary">
-                        Learn More
-                    </Button>
+                  <Button className = {classes.learnMoreBtn}>
+                    Show More
+                  </Button>
                 </CardActions>
-            </Card>
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={One}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <h4 className={classes.cardTitle}>Harry Potter The Prisoner Of Askaban.</h4>
-                        <p className={classes.authorStyles}>Author : Osama Azhar</p>
-                        <p className={classes.paraStyles}>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit asperiores saepe voluptates provident maiores aliquam quo, quia cumque rem optio? Id, ab at incidunt fuga tempora eos quasi molestiae dolor?</p>
-                        <p className={classes.paraStyles}>Availability : Available</p>
-                        {/* <p>Posted At: 20th/Jan/2021</p> */}
-
-
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-
-                    <Button size="small" color="primary">
-                        Learn More
-                    </Button>
-                </CardActions>
-            </Card>
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={One}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <h4 className={classes.cardTitle}>Harry Potter The Prisoner Of Askaban.</h4>
-                        <p className={classes.authorStyles}>Author : Osama Azhar</p>
-                        <p className={classes.paraStyles}>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit asperiores saepe voluptates provident maiores aliquam quo, quia cumque rem optio? Id, ab at incidunt fuga tempora eos quasi molestiae dolor?</p>
-                        <p className={classes.paraStyles}>Availability : Available</p>
-                        {/* <p>Posted At: 20th/Jan/2021</p> */}
-
-
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-
-                    <Button size="small" color="primary">
-                        Learn More
-                    </Button>
-                </CardActions>
-            </Card>
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={One}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <h4 className={classes.cardTitle}>Harry Potter The Prisoner Of Askaban.</h4>
-                        <p className={classes.authorStyles}>Author : Osama Azhar</p>
-                        <p className={classes.paraStyles}>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit asperiores saepe voluptates provident maiores aliquam quo, quia cumque rem optio? Id, ab at incidunt fuga tempora eos quasi molestiae dolor?</p>
-                        <p className={classes.paraStyles}>Availability : Available</p>
-                        {/* <p>Posted At: 20th/Jan/2021</p> */}
-
-
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-
-                    <Button size="small" color="primary">
-                        Learn More
-                    </Button>
-                </CardActions>
-            </Card>
+              </Card>)
+            }
         </div>
     </div>;
 };

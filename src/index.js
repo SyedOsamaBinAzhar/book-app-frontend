@@ -14,6 +14,7 @@ import BooksPage from './pages/books/booksPage';
 
 //importing pages
 import SignupPage from "./pages/signup/signupPage";
+import SingleBook from './pages/singleBook/singleBook';
 // import ProtectedRoute from './protectedRoutes/protectedRoutes';
 
 
@@ -28,6 +29,7 @@ render(
     <Routes>
       <Route path="/" element={<SignupPage/>} />
       <Route path="/books" element={<BooksPage/>} />
+      <Route path="/book/id" element={<SingleBook/>} />
     </Routes>
   </BrowserRouter>
   </Provider>,

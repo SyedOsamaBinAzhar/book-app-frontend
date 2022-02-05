@@ -2,6 +2,7 @@ import axios from "axios";
 
 const createUser = async (userDetails) => {
 
+    console.log("userDetails",userDetails);
     try {
 
         const user = await axios({
@@ -14,7 +15,7 @@ const createUser = async (userDetails) => {
             }
           })
 
-        // console.log(user);
+        console.log("user",user);
         return user;
         
         } catch (error) {

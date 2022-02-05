@@ -1,33 +1,48 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import { Navigate } from 'react-router';
 import "./booksLayout.css";
+import axios from 'axios';
 
 import Navbar from '../../components/navbar/navbar';
 import CardsLayout from '../cardsLayout/cardsLayout';
 
+
 const BooksLayout = () => {
 
-  const isAuthenticated = useSelector((state) => state.authState.authState)
+  const [books, setBooks] = useState([]);
 
-  console.log(isAuthenticated);
+  //Consuming user sign in state from Redux. Could've been stored in local storage and fetched from there
+  //but wanted to get hands on on Redux;
+  const isAuthenticated = useSelector((state) => state.authState.authState);
 
-  useEffect(() => {
-    //to do:
-    //step1 : check if authenticated
-    //step2 : if yes: call function for api call
-    //step3 : if no: do nothing    
+  const readBooks = async() => {
 
-  },[isAuthenticated])
+  try {
+    // Make a request for books
+    const books = await axios.get('http://localhost:8000/api/user/books');
+    //set in local state
+    setBooks(books.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+useEffect(() => {
   
-   
-  return isAuthenticated ?
-      <div className='booksLayoutContainer'>
-          <div className="navbarContainer"><Navbar/></div>
-          <div className="booksContainer"><CardsLayout/></div>
-      </div>
-        :
-      <Navigate push to="/" />
-};
+  readBooks();
+  
+}, []);
 
+
+  //if user authenticated -> books page 
+  //if not -> redirect to signup
+  return isAuthenticated ? <div className='booksLayoutContainer'>
+    {console.log(books)}
+  <div className="navbarContainer"><Navbar/></div>
+  <div className="booksContainer"><CardsLayout books = {books}/></div>
+</div>
+  :
+<Navigate push to="/" />
+}
 export default BooksLayout;
