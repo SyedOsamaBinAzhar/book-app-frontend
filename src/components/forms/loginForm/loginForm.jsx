@@ -39,12 +39,10 @@ const onFormSubmit = async(e) => {
 
     e.preventDefault();
 
-
     const userDetails = {
         email,
         password,
     }
-
 
     const user = await loginUser(userDetails);
 

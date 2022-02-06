@@ -16,7 +16,7 @@ const SpecificBook = () => {
     const classes = useStyles();
     const [modalState, setModalState] = useState(false);
     const [book,setBook] = useState({});
-    const isAuthenticated = useSelector((state) => state.authState.authState);
+    const isAuthenticated = useSelector((state) => state.authState);
 
     const params = useParams();
 

@@ -13,8 +13,8 @@ const BooksLayout = () => {
   const [books, setBooks] = useState([]);
 
   //Consuming user sign in state from Redux. Could've been stored in local storage and fetched from there
-  //but wanted to get hands on on Redux;
-  const isAuthenticated = useSelector((state) => state.authState.authState);
+  //but wanted to get hands on experience on Redux;
+  const isAuthenticated = useSelector((state) => state.authState);
 
   const readBooks = async() => {
 
@@ -24,7 +24,7 @@ const BooksLayout = () => {
     //set in local state
     setBooks(books.data);
   } catch (error) {
-    console.log(error);
+    alert(error);
   }
 }
 

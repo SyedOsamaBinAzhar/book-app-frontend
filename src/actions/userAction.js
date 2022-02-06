@@ -5,6 +5,9 @@ export const userAction = (user) => ({
     }
 });
 
-// export const signoutAction = () => ({
-//     type : "SIGN_OUT",
-// })
+export const clearUserDetailsAction = () => ({
+    type : "CLEAR_USER_DETAILS",
+    payload : {
+        user : null
+    }
+})
