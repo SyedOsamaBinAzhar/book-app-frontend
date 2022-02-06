@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import { Button, TextField } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import updateUser from './updateUser';
+import bookRequest from "./createBookRequest";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -78,8 +79,12 @@ export default function RequestModal({ modalState, setModalState, book }) {
     const reqObject = {
       userId, bookId
     }
+    //created request collected in db for the requests received.
+    bookRequest(reqObject)
 
     setModalState(false);
+
+    alert("Your request has been received, we will deliver the book to your address");
   }
 
   const body = (
