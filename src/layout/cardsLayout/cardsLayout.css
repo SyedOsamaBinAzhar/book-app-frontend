@@ -16,7 +16,5 @@
     /* background-color: royalblue; */
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     grid-gap: 11rem;
-}
-.cardCont {
     /* background-color: red; */
 }

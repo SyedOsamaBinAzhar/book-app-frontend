@@ -44,11 +44,11 @@ const SpecificBook = () => {
                         max={5}
                         valueLabelDisplay="auto"
                         valueLabelDisplay="on"
-                        color = "red"
-                        style ={{width : 250, marginTop : 40, color : "red"}}
+                        
+                        style ={{width : 250, marginTop : 40, color : "#24819E"}}
                     />
                   
-                    <Button type = "submit" className = {classes.btns}>SUBMIT</Button>
+                    <Button type = "submit" className = {classes.submitBtn}>SUBMIT</Button>
                   </form>
               </div>
           </div>
@@ -59,7 +59,8 @@ const SpecificBook = () => {
                 weight = {900}
                 fontFamily = "Poppins, sans-serif"
                 fontSize = {30}
-                color = "#24819E"
+                // color = "#24819E"
+                color = "#F8F8F8"
                 lineHeight = {1.5}
                 />
 
@@ -113,7 +114,7 @@ const SpecificBook = () => {
                 lineHeight = {2}
                 />
 
-                <Button className = {classes.btns}>Request Your Book Now!</Button>
+                <Button className = {classes.requestYourBookBtn}>Request Your Book Now!</Button>
               </div>
           </div>
       </div>
@@ -121,17 +122,34 @@ const SpecificBook = () => {
 };
 
 const useStyles = makeStyles({
-    btns : {
-        fontSize : "13px",
-        background: "#24819E", 
-        color : "white", 
+    requestYourBookBtn : {
+        fontSize : "15px",
+        background : "#F8F8F8",
+        color : "black", 
         fontWeight : 800, 
         letterSpacing: 1, 
         fontFamily : "Poppins", 
         marginTop : 20,
         marginBottom : 20,
         paddingLeft : 30,
-        paddingRight : 30 
+        paddingRight : 30,
+        paddingTop : 15,
+        paddingBottom : 15,
+    },
+    submitBtn : {
+        fontSize : "15px",
+        // background: "#24819E",
+        background : "#F8F8F8",
+        color : "black", 
+        fontWeight : 800, 
+        letterSpacing: 1, 
+        fontFamily : "Poppins", 
+        marginTop : 20,
+        marginBottom : 20,
+        paddingLeft : 40,
+        paddingRight : 40,
+        paddingTop : 10,
+        paddingBottom : 10,
     }
 })
 

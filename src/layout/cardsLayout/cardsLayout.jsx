@@ -14,6 +14,8 @@ const useStyles = makeStyles({
     root: {
         maxWidth: 305,
         height: 560,
+        borderRadius : 15,
+        boxShadow: "0px 6px 9px rgba(0, 0, 0, 0.29)",
     },
     media: {
         height: 240,

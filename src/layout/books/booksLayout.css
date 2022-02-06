@@ -1,6 +1,9 @@
 .booksLayoutContainer {
     display: grid;
-    background-image: url("../../Assets//books//backgroundImage.jpeg");
+    background-image: url("../../Assets//books/imageFive2.jfif");
+    background-color: #F8F8F8;
+    background-size: 100%,cover;
+    background-repeat: no-repeat;
     grid-template-columns: 5vw 90vw 5vw;
     grid-template-rows: minmax(15vh,min-content) minmax(85vh,min-content);
     grid-template-areas: ". navbarContainer ."
