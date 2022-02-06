@@ -15,9 +15,6 @@ import BooksPage from './pages/books/booksPage';
 //importing pages
 import SignupPage from "./pages/signup/signupPage";
 import SingleBook from './pages/singleBook/singleBook';
-// import ProtectedRoute from './protectedRoutes/protectedRoutes';
-
-
 
 const store = createStore(allReducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -28,8 +25,8 @@ render(
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<SignupPage/>} />
-      <Route path="/books" element={<BooksPage/>} />
-      <Route path="/book/id" element={<SingleBook/>} />
+      <Route path="/books" element={<BooksPage/>} exact/>
+      <Route path="/book/:id" element={<SingleBook/>} />
     </Routes>
   </BrowserRouter>
   </Provider>,

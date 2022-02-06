@@ -1,7 +1,6 @@
 import React from 'react';
 import "./cardsLayout.css";
 import Heading from "../../components/reusable/heading/heading";
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import { useNavigate } from 'react-router';
 
 const useStyles = makeStyles({
     root: {
@@ -36,7 +36,6 @@ const useStyles = makeStyles({
 
     },
     paraStyles: {
-        color: "",
         fontFamily: "Poppins",
         letterSpacing: 0.5,
         lineHeight: 1.5,
@@ -58,6 +57,14 @@ const useStyles = makeStyles({
 const CardsLayout = ({ books }) => {
 
     const classes = useStyles();
+
+    const navigate = useNavigate();
+
+    const handleShowMore = (id) => {
+        if(id) {
+            navigate(`/book/${id}`);
+        }
+    }
 
 
     return <div className='cardsLayoutCont'>
@@ -93,9 +100,13 @@ const CardsLayout = ({ books }) => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button className = {classes.learnMoreBtn}>
-                    Show More
-                  </Button>
+                    <Button 
+                    className = {classes.learnMoreBtn} 
+                    id={book._id}
+                    onClick = {() => handleShowMore(book._id)}
+                    >
+                        Show More
+                    </Button>
                 </CardActions>
               </Card>)
             }

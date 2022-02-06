@@ -35,18 +35,15 @@ const SignupForm = () => {
 
     const onFormSubmit = async(e) => {
         e.preventDefault()
-        console.log("hello");
         const userDetails = {
             name,
             email,
             password
         }
-        // console.log(userDetails);
         
 
         //initiate request
         const user = await createUser(userDetails)
-        console.log("user",user);
 
         //Destructuring:
 

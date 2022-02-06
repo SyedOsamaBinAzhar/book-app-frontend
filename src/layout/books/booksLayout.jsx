@@ -30,6 +30,7 @@ const BooksLayout = () => {
 
 useEffect(() => {
   
+  //api call
   readBooks();
   
 }, []);
@@ -38,7 +39,6 @@ useEffect(() => {
   //if user authenticated -> books page 
   //if not -> redirect to signup
   return isAuthenticated ? <div className='booksLayoutContainer'>
-    {console.log(books)}
   <div className="navbarContainer"><Navbar/></div>
   <div className="booksContainer"><CardsLayout books = {books}/></div>
 </div>

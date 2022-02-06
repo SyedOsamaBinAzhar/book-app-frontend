@@ -11,9 +11,7 @@
 }
 .navbarContainer {
     grid-area: navbarContainer;
-    /* background-color: pink; */
 }
 .booksContainer {
     grid-area: booksContainer;
-    /* background-color: orange; */
 }

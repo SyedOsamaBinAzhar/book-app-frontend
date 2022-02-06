@@ -1,6 +1,5 @@
 .container {
     display: grid;
-    /* position: relative; */
     grid-template-columns: 5vw 90vw 5vw;
     background-image: url("../../Assets/books/imageFive2.jfif");
     background-size: 100% 100%,cover;
@@ -10,12 +9,9 @@
 }
 .navbarCont{
     grid-area: navbarCont;
-    /* background-color: blueviolet; */
 }
 .contentCont{
     grid-area: contentCont;
-    /* background-color: brown; */
-    /* border: 1px solid blue; */
     display: grid;
     grid-template-columns: 65% 35%;
     grid-template-rows: minmax(85vh,min-content);
@@ -23,21 +19,17 @@
 }
 .imageAndCommentCont{
     grid-area: imageAndCommentCont;
-    /* background-color: peru; */
 }
 .bookDetailsCont{
     grid-area: bookDetailsCont;
-    /* background-color: green; */
 }
 .bookDetails{
-    /* border: 1px solid black; */
     padding: 15px;
 }
 
 .bookCover {
     height : 50rem;
     width : 70rem;
-    /* border: 3px solid red; */
     margin-left: 20px;
     margin-top: 20px;
     border-radius: 30px;
