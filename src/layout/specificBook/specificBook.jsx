@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
 import Heading from '../../components/reusable/heading/heading';
 import Paragraph from '../../components/reusable/paragraph/paragraph';
@@ -8,17 +8,28 @@ import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Slider from '@material-ui/core/Slider'
 import { makeStyles } from '@material-ui/core/styles';
+import SimpleModal from './modal';
 
 const SpecificBook = () => {
 
     const classes = useStyles();
-
+    const [modalState, setModalState] = useState(false);
 
     function valuetext(value) {
         console.log(value)
-      }
+    }
+
+    const handleClick = () => {
+        console.log("clicked");
+        setModalState(!modalState)
+    }
+    // useEffect(() => {
+
+    // }, [modalState]);
+    
 
   return <div className='container'>
+      {console.log(modalState)}
       <div className="navbarCont"><Navbar/></div>
       <div className="contentCont">
           <div className="imageAndCommentCont">
@@ -114,10 +125,16 @@ const SpecificBook = () => {
                 lineHeight = {2}
                 />
 
-                <Button className = {classes.requestYourBookBtn}>Request Your Book Now!</Button>
+                <Button 
+                className = {classes.requestYourBookBtn}
+                onClick = {handleClick}
+                >
+                    Request Your Book Now!
+                </Button>
               </div>
           </div>
       </div>
+      <SimpleModal modalState={modalState} setModalState = {setModalState}/>
   </div>;
 };
 
