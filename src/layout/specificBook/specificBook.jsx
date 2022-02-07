@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
 import Heading from '../../components/reusable/heading/heading';
 import "./specificBook.css";
-import { Button, Box } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import RequestModal from './modal';
 import { useParams } from 'react-router-dom'
@@ -10,31 +10,13 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import BookRating from '../../components/rating/rating';
-// import Box from '@mui/material/Box';
-// import StarIcon from '@mui/icons-material/Star';
 
 const SpecificBook = () => {
 
     const classes = useStyles();
     const [modalState, setModalState] = useState(false);
     const [book, setBook] = useState({});
-    const [value, setValue] = React.useState(2);
-    const [hover, setHover] = React.useState(-1);
     const isAuthenticated = useSelector((state) => state.authState);
-
-    const labels = {
-        0.5: 'Useless',
-        1: 'Useless+',
-        1.5: 'Poor',
-        2: 'Poor+',
-        2.5: 'Ok',
-        3: 'Ok+',
-        3.5: 'Good',
-        4: 'Good+',
-        4.5: 'Excellent',
-        5: 'Excellent+',
-      };
-      
 
     const params = useParams();
 
@@ -77,9 +59,8 @@ const SpecificBook = () => {
                             lineHeight={1.5}
                         />
                         
-                        <BookRating/>
+                        <BookRating bookId = {book._id}/>
 
-                        <Button type="submit" className={classes.submitBtn}>SUBMIT</Button>
                     </form>
                 </div>
             </div>
@@ -128,20 +109,6 @@ const useStyles = makeStyles({
         paddingRight: 30,
         paddingTop: 15,
         paddingBottom: 15,
-    },
-    submitBtn: {
-        fontSize: "15px",
-        background: "#F8F8F8",
-        color: "black",
-        fontWeight: 800,
-        letterSpacing: 1,
-        fontFamily: "Poppins",
-        marginTop: 20,
-        marginBottom: 20,
-        paddingLeft: 40,
-        paddingRight: 40,
-        paddingTop: 10,
-        paddingBottom: 10,
     },
     paraStyles: {
         color: "#F8F8F8",
