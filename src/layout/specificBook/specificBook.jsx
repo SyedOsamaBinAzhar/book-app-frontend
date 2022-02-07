@@ -16,14 +16,18 @@ const SpecificBook = () => {
     const classes = useStyles();
     const [modalState, setModalState] = useState(false);
     const [book, setBook] = useState({});
+    const [comments, setComments] = useState([]);
+
     const isAuthenticated = useSelector((state) => state.authState);
 
     const params = useParams();
 
     useEffect(() => {
+        console.log("use effect called");
         if (params.id) {
             getBookDetails();
         }
+        getComments(params.id);
     }, [params.id]);
 
 
@@ -32,15 +36,16 @@ const SpecificBook = () => {
         setBook(bookDetails.data);
     }
 
-    function valuetext(e, value) {
-        console.log(e.target);
-        console.log(value)
+    const getComments = async (id) => {
+        //get comments of specific bookId
+        const filteredComments = await axios.get(`http://localhost:8000/api/user/comments/${id}`);
+        //set filtered comments in state
+        setComments(filteredComments.data);
     }
 
     const handleClick = () => {
         setModalState(!modalState)
     }
-
 
     return isAuthenticated ? <div className='container'>
         <div className="navbarCont"><Navbar /></div>
@@ -86,6 +91,19 @@ const SpecificBook = () => {
                     >
                         Request Your Book Now!
                     </Button>
+
+                    <div className="commentsSection">
+                        <Heading
+                            value = "Here's What People Say About This Book..."
+                            weight={900}
+                            fontFamily="Poppins, sans-serif"
+                            fontSize={35}
+                            color="white"
+                        />
+                        {
+                            comments.map((comment, index) => <p key = {index} className={classes.paraStyles}>{`${comment.userName} said "${comment.commentContent}" on ${comment.date.slice(0,10)}`}</p>)
+                        }
+                    </div>
                 </div>
             </div>
         </div>

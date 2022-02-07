@@ -75,12 +75,11 @@ const CardsLayout = ({ books }) => {
                 fontFamily="Poppins, sans-serif"
                 fontSize={35}
                 color="white"
-
             />
         </div>
         <div className="booksCont">
             {
-                books.map((book) => <Card className={classes.root}>
+                books.map((book, index) => <Card key ={index} className={classes.root}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}

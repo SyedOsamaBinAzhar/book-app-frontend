@@ -14,7 +14,6 @@ const BookRating = ({bookId}) => {
     const user = useSelector((state) => state.userDetails.user);
     const {userId, userName} =  user;
 
-    console.log(userId,userName);
 
 
     const labels = {
@@ -41,7 +40,6 @@ const BookRating = ({bookId}) => {
             commentContent : review,
             bookId
         }
-        console.log("review",commentObj);
 
         //create comment in db
         writeComment(commentObj)
