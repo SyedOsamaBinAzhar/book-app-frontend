@@ -8,7 +8,7 @@ const loginUser = async (userDetails) => {
 
         const user = await axios({
             method: 'post',
-            url: 'http://localhost:8000/api/user/login',
+            url: 'https://book-app-vd.herokuapp.com/api/user/login',
             data: userDetails,
           })
 

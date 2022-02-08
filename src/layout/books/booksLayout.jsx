@@ -20,7 +20,7 @@ const BooksLayout = () => {
 
   try {
     // Make a request for books
-    const books = await axios.get('http://localhost:8000/api/user/books');
+    const books = await axios.get('https://book-app-vd.herokuapp.com/api/user/books');
     //set in local state
     setBooks(books.data);
   } catch (error) {

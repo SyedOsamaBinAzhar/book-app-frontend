@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router';
 const useStyles = makeStyles({
     root: {
         maxWidth: 305,
-        height: 560,
+        height: 580,
         borderRadius : 15,
         boxShadow: "0px 6px 9px rgba(0, 0, 0, 0.29)",
     },

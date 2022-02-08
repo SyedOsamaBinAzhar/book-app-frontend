@@ -6,7 +6,7 @@ const createUser = async (userDetails) => {
 
         const user = await axios({
             method: 'post',
-            url: 'http://localhost:8000/api/user/register',
+            url: 'https://book-app-vd.herokuapp.com/api/user/register',
             data: userDetails,
           })
 

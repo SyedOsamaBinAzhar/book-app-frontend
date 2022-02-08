@@ -32,13 +32,13 @@ const SpecificBook = () => {
 
 
     const getBookDetails = async () => {
-        const bookDetails = await axios.get(`http://localhost:8000/api/user/books/${params.id}`);
+        const bookDetails = await axios.get(`https://book-app-vd.herokuapp.com/api/user/books/${params.id}`);
         setBook(bookDetails.data);
     }
 
     const getComments = async (id) => {
         //get comments of specific bookId
-        const filteredComments = await axios.get(`http://localhost:8000/api/user/comments/${id}`);
+        const filteredComments = await axios.get(`https://book-app-vd.herokuapp.com/api/user/comments/${id}`);
         //set filtered comments in state
         setComments(filteredComments.data);
     }
